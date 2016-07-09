@@ -10,6 +10,10 @@ import Foundation
 
 public class ConstraintGroup {
     private var constraints: [Constraint]
+    
+    public var layoutConstraints: [NSLayoutConstraint] {
+        return constraints.map{ $0.layoutConstraint }
+    }
 
     @available(OSX, introduced=10.10)
     @available(iOS, introduced=8.0)
