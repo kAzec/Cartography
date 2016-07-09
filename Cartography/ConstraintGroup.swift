@@ -9,7 +9,7 @@
 import Foundation
 
 public class ConstraintGroup {
-    private var constraints: [Constraint] = []
+    private var constraints: [Constraint]
 
     @available(OSX, introduced=10.10)
     @available(iOS, introduced=8.0)
@@ -25,9 +25,17 @@ public class ConstraintGroup {
             }
         }
     }
+    
+    init(_ constraints: [Constraint]) {
+        self.constraints = constraints
+    }
 
-    public init() {
-
+    public convenience init() {
+        self.init([])
+    }
+    
+    public convenience init(groups: ConstraintGroup...) {
+        self.init(groups.reduce([]){ $0 + $1.constraints })
     }
 
     internal func replaceConstraints(constraints: [Constraint]) {
