@@ -57,6 +57,13 @@ public struct LayoutProxy {
             Edge(context, view, .Trailing)
         ])
     }
+    
+    /// Edges of the view which affects specified laytout attributes.
+    public func edges(attributes: NSLayoutAttribute...) -> Edges {
+        let edges = Set(attributes).map{ Edge(context, view, $0) as Property }
+        assert(!edges.isEmpty)
+        return Edges(context, edges)
+    }
 
     /// The leading edge of the view.
     public var leading: Edge {
