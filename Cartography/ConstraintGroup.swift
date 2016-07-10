@@ -9,7 +9,7 @@
 import Foundation
 
 public class ConstraintGroup {
-    private var constraints: [Constraint]
+    var constraints: [Constraint]
     
     public var layoutConstraints: [NSLayoutConstraint] {
         return constraints.map{ $0.layoutConstraint }

@@ -25,17 +25,38 @@ class EdgesSpec: QuickSpec {
 
                 expect(view.frame).to(equal(view.superview?.frame))
             }
-        }
-
-        describe("LayoutProxy.edges") {
+            
             it("should support relative inequalities") {
                 constrain(view) { view in
                     view.edges <= view.superview!.edges
                     view.edges >= view.superview!.edges
                 }
-
+                
                 window.layoutIfNeeded()
-
+                
+                expect(view.frame).to(equal(view.superview?.frame))
+            }
+        }
+        
+        describe("LayoutProxy.edges(_:)") {
+            it("should support relative equalities") {
+                constrain(view) { view in
+                    view.edges(.Top, .Left, .Right, .Bottom) == view.superview!.edges(.Top, .Left, .Right, .Bottom)
+                }
+                
+                window.layoutIfNeeded()
+                
+                expect(view.frame).to(equal(view.superview?.frame))
+            }
+            
+            it("should support relative inequalities") {
+                constrain(view) { view in
+                    view.edges(.Top, .Left, .Right, .Bottom) <= view.superview!.edges(.Top, .Left, .Right, .Bottom)
+                    view.edges(.Top, .Left, .Right, .Bottom) >= view.superview!.edges(.Top, .Left, .Right, .Bottom)
+                }
+                
+                window.layoutIfNeeded()
+                
                 expect(view.frame).to(equal(view.superview?.frame))
             }
         }

@@ -7,6 +7,11 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
 public struct LayoutProxy {
     /// The width of the view.
@@ -26,89 +31,93 @@ public struct LayoutProxy {
             Dimension(context, view, .Height)
         ])
     }
+    
+    func edge(attribute: NSLayoutAttribute) -> Edge {
+        return Edge(context, view, attribute)
+    }
 
     /// The top edge of the view.
     public var top: Edge {
-        return Edge(context, view, .Top)
+        return edge(.Top)
     }
 
     /// The right edge of the view.
     public var right: Edge {
-        return Edge(context, view, .Right)
+        return edge(.Right)
     }
 
     /// The bottom edge of the view.
     public var bottom: Edge {
-        return Edge(context, view, .Bottom)
+        return edge(.Bottom)
     }
 
     /// The left edge of the view.
     public var left: Edge {
-        return Edge(context, view, .Left)
+        return edge(.Left)
     }
 
     /// All edges of the view. This property affects `top`, `bottom`, `leading`
     /// and `trailing`.
     public var edges: Edges {
         return Edges(context, [
-            Edge(context, view, .Top),
-            Edge(context, view, .Leading),
-            Edge(context, view, .Bottom),
-            Edge(context, view, .Trailing)
+            edge(.Top),
+            edge(.Leading),
+            edge(.Bottom),
+            edge(.Trailing)
         ])
     }
     
     /// Edges of the view which affects specified laytout attributes.
     public func edges(attributes: NSLayoutAttribute...) -> Edges {
-        let edges = attributes.map{ Edge(context, view, $0) as Property }
+        let edges: [Property] = attributes.map(edge)
         assert(!edges.isEmpty)
         return Edges(context, edges)
     }
 
     /// The leading edge of the view.
     public var leading: Edge {
-        return Edge(context, view, .Leading)
+        return edge(.Leading)
     }
 
     /// The trailing edge of the view.
     public var trailing: Edge {
-        return Edge(context, view, .Trailing)
+        return edge(.Trailing)
     }
 
     /// The horizontal center of the view.
     public var centerX: Edge {
-        return Edge(context, view, .CenterX)
+        return edge(.CenterX)
     }
 
     /// The vertical center of the view.
     public var centerY: Edge {
-        return Edge(context, view, .CenterY)
+        return edge(.CenterY)
     }
 
     /// The center point of the view. This property affects `centerX` and
     /// `centerY`.
     public var center: Point {
         return Point(context, [
-            Edge(context, view, .CenterX),
-            Edge(context, view, .CenterY)
+            edge(.CenterX),
+            edge(.CenterY)
         ])
     }
 
     /// The baseline of the view.
     public var baseline: Edge {
-        return Edge(context, view, .Baseline)
+        return edge(.Baseline)
     }
 
     /// The last baseline of the view.
     public var lastBaseline: Edge {
-        return Edge(context, view, .LastBaseline)
+        return edge(.LastBaseline)
     }
     
     #if os(iOS) || os(tvOS)
     /// The first baseline of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var firstBaseline: Edge {
-        return Edge(context, view, .FirstBaseline)
+        return edge(.FirstBaseline)
     }
 
     /// All edges of the view with their respective margins. This property
@@ -117,59 +126,59 @@ public struct LayoutProxy {
     @available(iOS, introduced=8.0)
     public var edgesWithinMargins: Edges {
         return Edges(context, [
-            Edge(context, view, .TopMargin),
-            Edge(context, view, .LeadingMargin),
-            Edge(context, view, .BottomMargin),
-            Edge(context, view, .TrailingMargin)
+            edge(.TopMargin),
+            edge(.LeadingMargin),
+            edge(.BottomMargin),
+            edge(.TrailingMargin)
         ])
     }
 
     /// The left margin of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var leftMargin: Edge {
-        return Edge(context, view, .LeftMargin)
+        return edge(.LeftMargin)
     }
 
     /// The right margin of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var rightMargin: Edge {
-        return Edge(context, view, .RightMargin)
+        return edge(.RightMargin)
     }
 
     /// The top margin of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var topMargin: Edge {
-        return Edge(context, view, .TopMargin)
+        return edge(.TopMargin)
     }
 
     /// The bottom margin of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var bottomMargin: Edge {
-        return Edge(context, view, .BottomMargin)
+        return edge(.BottomMargin)
     }
 
     /// The leading margin of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var leadingMargin: Edge {
-        return Edge(context, view, .LeadingMargin)
+        return edge(.LeadingMargin)
     }
 
     /// The trailing margin of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var trailingMargin: Edge {
-        return Edge(context, view, .TrailingMargin)
+        return edge(.TrailingMargin)
     }
 
     /// The horizontal center within the margins of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var centerXWithinMargins: Edge {
-        return Edge(context, view, .CenterXWithinMargins)
+        return edge(.CenterXWithinMargins)
     }
 
     /// The vertical center within the margins of the view. iOS exclusive.
     @available(iOS, introduced=8.0)
     public var centerYWithinMargins: Edge {
-        return Edge(context, view, .CenterYWithinMargins)
+        return edge(.CenterYWithinMargins)
     }
 
     /// The center point within the margins of the view. This property affects
@@ -177,8 +186,8 @@ public struct LayoutProxy {
     @available(iOS, introduced=8.0)
     public var centerWithinMargins: Point {
         return Point(context, [
-            Edge(context, view, .CenterXWithinMargins),
-            Edge(context, view, .CenterYWithinMargins)
+            edge(.CenterXWithinMargins),
+            edge(.CenterYWithinMargins)
         ])
     }
     #endif

@@ -31,13 +31,13 @@ class AlignSpec: QuickSpec {
             }
         }
 
-        describe("for edges") {
+        describe("for edges(using proxies)") {
             beforeEach {
                 constrain(viewA, viewB, viewC) { viewA, viewB, viewC in
-                    align(top: viewA, viewB, viewC)
-                    align(right: viewA, viewB, viewC)
-                    align(bottom: viewA, viewB, viewC)
-                    align(left: viewA, viewB, viewC)
+                    align(.Top, viewA, viewB, viewC)
+                    align(.Right, viewA, viewB, viewC)
+                    align(.Bottom, viewA, viewB, viewC)
+                    align(.Left, viewA, viewB, viewC)
                 }
             }
 
@@ -52,6 +52,62 @@ class AlignSpec: QuickSpec {
                 expect(viewC).notTo(translateAutoresizingMasksToConstraints())
             }
         }
+        
+        describe("for edges(using proxies, attributes as array)") {
+            beforeEach {
+                constrain(viewA, viewB, viewC) { viewA, viewB, viewC in
+                    align([.Top, .Right, .Bottom, .Left], viewA, viewB, viewC)
+                }
+            }
+            
+            it("should align edges") {
+                expect(viewA.frame).to(equal(viewB.frame))
+                expect(viewA.frame).to(equal(viewB.frame))
+            }
+            
+            it("should disable translating autoresizing masks into constraints") {
+                expect(viewA).notTo(translateAutoresizingMasksToConstraints())
+                expect(viewB).notTo(translateAutoresizingMasksToConstraints())
+                expect(viewC).notTo(translateAutoresizingMasksToConstraints())
+            }
+        }
+        
+        describe("for edges(using views)") {
+            beforeEach {
+                align(.Top, viewA, viewB, viewC)
+                align(.Right, viewA, viewB, viewC)
+                align(.Bottom, viewA, viewB, viewC)
+                align(.Left, viewA, viewB, viewC)
+            }
+            
+            it("should align edges") {
+                expect(viewA.frame).to(equal(viewB.frame))
+                expect(viewA.frame).to(equal(viewB.frame))
+            }
+            
+            it("should disable translating autoresizing masks into constraints") {
+                expect(viewA).notTo(translateAutoresizingMasksToConstraints())
+                expect(viewB).notTo(translateAutoresizingMasksToConstraints())
+                expect(viewC).notTo(translateAutoresizingMasksToConstraints())
+            }
+        }
+        
+        describe("for edges(using views, attributes as array)") {
+            beforeEach {
+                align([.Top, .Right, .Bottom, .Left], viewA, viewB, viewC)
+            }
+            
+            it("should align edges") {
+                expect(viewA.frame).to(equal(viewB.frame))
+                expect(viewA.frame).to(equal(viewB.frame))
+            }
+            
+            it("should disable translating autoresizing masks into constraints") {
+                expect(viewA).notTo(translateAutoresizingMasksToConstraints())
+                expect(viewB).notTo(translateAutoresizingMasksToConstraints())
+                expect(viewC).notTo(translateAutoresizingMasksToConstraints())
+            }
+        }
 
         describe("for horizontal and vertical centers") {
             beforeEach {
@@ -59,8 +115,8 @@ class AlignSpec: QuickSpec {
                     viewA.size == viewB.size
                     viewB.size == viewC.size
 
-                    align(centerX: viewA, viewB, viewC)
-                    align(centerY: viewA, viewB, viewC)
+                    align(.CenterX, viewA, viewB, viewC)
+                    align(.CenterY, viewA, viewB, viewC)
                 }
             }
 

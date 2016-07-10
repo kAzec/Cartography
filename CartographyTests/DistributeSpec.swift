@@ -37,7 +37,7 @@ class DistributeSpec: QuickSpec {
         describe("from left to right") {
             beforeEach {
                 constrain(viewA, viewB, viewC) { viewA, viewB, viewC in
-                    align(centerY: viewA, viewB, viewC)
+                    align(.CenterY, viewA, viewB, viewC)
                     distribute(by: 10, leftToRight: viewA, viewB, viewC)
                 }
 
@@ -60,7 +60,7 @@ class DistributeSpec: QuickSpec {
         describe("vertically") {
             beforeEach {
                 constrain(viewA, viewB, viewC) { viewA, viewB, viewC in
-                    align(centerX: viewA, viewB, viewC)
+                    align(.CenterX, viewA, viewB, viewC)
                     distribute(by: 10, vertically: viewA, viewB, viewC)
                 }
 
