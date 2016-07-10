@@ -60,7 +60,7 @@ public struct LayoutProxy {
     
     /// Edges of the view which affects specified laytout attributes.
     public func edges(attributes: NSLayoutAttribute...) -> Edges {
-        let edges = Set(attributes).map{ Edge(context, view, $0) as Property }
+        let edges = attributes.map{ Edge(context, view, $0) as Property }
         assert(!edges.isEmpty)
         return Edges(context, edges)
     }
