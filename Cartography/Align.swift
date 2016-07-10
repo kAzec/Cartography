@@ -36,7 +36,7 @@ private func makeAlign(context: Context, attribute: NSLayoutAttribute, first: Vi
 ///
 /// - returns: An array of `NSLayoutConstraint` instances.
 ///
-public func align(attribute: NSLayoutAttribute, _ first: LayoutProxy, _ rest: LayoutProxy...) -> [NSLayoutConstraint] {
+public func align(attribute: NSLayoutAttribute, of first: LayoutProxy, _ rest: LayoutProxy...) -> [NSLayoutConstraint] {
     return makeAlign(attribute, first: first, rest: rest)
 }
 
@@ -47,7 +47,7 @@ public func align(attribute: NSLayoutAttribute, _ first: LayoutProxy, _ rest: La
 ///
 /// - returns: An array of `NSLayoutConstraint` instances.
 ///
-public func align(attributes: [NSLayoutAttribute], _ first: LayoutProxy, _ rest: LayoutProxy...) -> [NSLayoutConstraint] {
+public func align(attributes: [NSLayoutAttribute], of first: LayoutProxy, _ rest: LayoutProxy...) -> [NSLayoutConstraint] {
     return attributes.reduce([]) { acc, attribute in
         return acc + makeAlign(attribute, first: first, rest: rest)
     }
@@ -60,7 +60,7 @@ public func align(attributes: [NSLayoutAttribute], _ first: LayoutProxy, _ rest:
 ///
 /// - returns: An array of `NSLayoutConstraint` instances.
 ///
-public func align(attribute: NSLayoutAttribute, _ first: View, _ rest: View...) -> ConstraintGroup {
+public func align(attribute: NSLayoutAttribute, of first: View, _ rest: View...) -> ConstraintGroup {
     let context = Context()
     makeAlign(context, attribute: attribute, first: first, rest: rest)
     return ConstraintGroup(context.constraints)
@@ -73,7 +73,7 @@ public func align(attribute: NSLayoutAttribute, _ first: View, _ rest: View...) 
 ///
 /// - returns: An array of `NSLayoutConstraint` instances.
 ///
-public func align(attributes: [NSLayoutAttribute], _ first: View, _ rest: View...) -> ConstraintGroup {
+public func align(attributes: [NSLayoutAttribute], of first: View, _ rest: View...) -> ConstraintGroup {
     let context = Context()
     attributes.forEach{ makeAlign(context, attribute: $0, first: first, rest: rest) }
     return ConstraintGroup(context.constraints)
