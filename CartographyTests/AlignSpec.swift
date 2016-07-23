@@ -34,10 +34,10 @@ class AlignSpec: QuickSpec {
         describe("for edges(using proxies)") {
             beforeEach {
                 constrain(viewA, viewB, viewC) { viewA, viewB, viewC in
-                    align(.Top, viewA, viewB, viewC)
-                    align(.Right, viewA, viewB, viewC)
-                    align(.Bottom, viewA, viewB, viewC)
-                    align(.Left, viewA, viewB, viewC)
+                    align(.Top, of: viewA, viewB, viewC)
+                    align(.Right, of: viewA, viewB, viewC)
+                    align(.Bottom, of: viewA, viewB, viewC)
+                    align(.Left, of: viewA, viewB, viewC)
                 }
             }
 
@@ -56,7 +56,7 @@ class AlignSpec: QuickSpec {
         describe("for edges(using proxies, attributes as array)") {
             beforeEach {
                 constrain(viewA, viewB, viewC) { viewA, viewB, viewC in
-                    align([.Top, .Right, .Bottom, .Left], viewA, viewB, viewC)
+                    align([.Top, .Right, .Bottom, .Left], of: viewA, viewB, viewC)
                 }
             }
             
@@ -74,10 +74,10 @@ class AlignSpec: QuickSpec {
         
         describe("for edges(using views)") {
             beforeEach {
-                align(.Top, viewA, viewB, viewC)
-                align(.Right, viewA, viewB, viewC)
-                align(.Bottom, viewA, viewB, viewC)
-                align(.Left, viewA, viewB, viewC)
+                align(.Top, of: viewA, viewB, viewC)
+                align(.Right, of: viewA, viewB, viewC)
+                align(.Bottom, of: viewA, viewB, viewC)
+                align(.Left, of: viewA, viewB, viewC)
             }
             
             it("should align edges") {
@@ -94,7 +94,7 @@ class AlignSpec: QuickSpec {
         
         describe("for edges(using views, attributes as array)") {
             beforeEach {
-                align([.Top, .Right, .Bottom, .Left], viewA, viewB, viewC)
+                align([.Top, .Right, .Bottom, .Left], of: viewA, viewB, viewC)
             }
             
             it("should align edges") {
@@ -115,8 +115,8 @@ class AlignSpec: QuickSpec {
                     viewA.size == viewB.size
                     viewB.size == viewC.size
 
-                    align(.CenterX, viewA, viewB, viewC)
-                    align(.CenterY, viewA, viewB, viewC)
+                    align(.CenterX, of: viewA, viewB, viewC)
+                    align(.CenterY, of: viewA, viewB, viewC)
                 }
             }
 
