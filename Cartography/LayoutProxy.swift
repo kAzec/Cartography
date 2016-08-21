@@ -104,26 +104,28 @@ public struct LayoutProxy {
     }
 
     /// The baseline of the view.
+    @available(OSX, deprecated=10.11, renamed="lastBaseline")
+    @available(iOS, deprecated=8.0, renamed="lastBaseline")
     public var baseline: Edge {
-        return edge(.Baseline)
+        return edge(.LastBaseline)
+    }
+
+    /// The first baseline of the view.
+    @available(OSX, introduced=10.11)
+    public var firstBaseline: Edge {
+        return edge(.FirstBaseline)
     }
 
     /// The last baseline of the view.
+    @available(OSX, introduced=10.11)
     public var lastBaseline: Edge {
         return edge(.LastBaseline)
     }
     
     #if os(iOS) || os(tvOS)
-    /// The first baseline of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
-    public var firstBaseline: Edge {
-        return edge(.FirstBaseline)
-    }
-
     /// All edges of the view with their respective margins. This property
     /// affects `topMargin`, `bottomMargin`, `leadingMargin` and
     /// `trailingMargin`.
-    @available(iOS, introduced=8.0)
     public var edgesWithinMargins: Edges {
         return Edges(context, [
             edge(.TopMargin),
@@ -134,56 +136,47 @@ public struct LayoutProxy {
     }
 
     /// The left margin of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var leftMargin: Edge {
         return edge(.LeftMargin)
     }
 
     /// The right margin of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var rightMargin: Edge {
         return edge(.RightMargin)
     }
 
     /// The top margin of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var topMargin: Edge {
         return edge(.TopMargin)
     }
 
     /// The bottom margin of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var bottomMargin: Edge {
         return edge(.BottomMargin)
     }
 
     /// The leading margin of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var leadingMargin: Edge {
         return edge(.LeadingMargin)
     }
 
     /// The trailing margin of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var trailingMargin: Edge {
         return edge(.TrailingMargin)
     }
 
     /// The horizontal center within the margins of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var centerXWithinMargins: Edge {
         return edge(.CenterXWithinMargins)
     }
 
     /// The vertical center within the margins of the view. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var centerYWithinMargins: Edge {
         return edge(.CenterYWithinMargins)
     }
 
     /// The center point within the margins of the view. This property affects
     /// `centerXWithinMargins` and `centerYWithinMargins`. iOS exclusive.
-    @available(iOS, introduced=8.0)
     public var centerWithinMargins: Point {
         return Point(context, [
             edge(.CenterXWithinMargins),
