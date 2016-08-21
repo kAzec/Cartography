@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CB692001D693C00008B999B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE6D9AD1D693AD6003FC5E1 /* Nimble.framework */; };
+		4CB692011D693C00008B999B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE6D9AE1D693AD6003FC5E1 /* Quick.framework */; };
+		4CB692021D693C02008B999B /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE6D9AD1D693AD6003FC5E1 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CB692031D693C02008B999B /* Quick.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE6D9AE1D693AD6003FC5E1 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		541305B91B49598E003F1935 /* Matchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541305B71B495986003F1935 /* Matchers.swift */; };
 		541305BA1B49598F003F1935 /* Matchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541305B71B495986003F1935 /* Matchers.swift */; };
 		54143E4E1A93991D00208182 /* Distribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5467916E1A93962000DC9BF7 /* Distribute.swift */; };
@@ -153,6 +157,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4CE6D9AC1D693ABC003FC5E1 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4CB692021D693C02008B999B /* Nimble.framework in Copy Frameworks */,
+				4CB692031D693C02008B999B /* Quick.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5435B8C41AD8614F00B805F1 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -180,6 +196,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4CE6D9AD1D693AD6003FC5E1 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/tvOS/Nimble.framework; sourceTree = "<group>"; };
+		4CE6D9AE1D693AD6003FC5E1 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/tvOS/Quick.framework; sourceTree = "<group>"; };
 		541305B71B495986003F1935 /* Matchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matchers.swift; sourceTree = "<group>"; };
 		54143E4F1A939D6000208182 /* DistributeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DistributeSpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5435B8B41AD8610300B805F1 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
@@ -275,6 +293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				632F09271BF1E7FC002431A3 /* Cartography.framework in Frameworks */,
+				4CB692001D693C00008B999B /* Nimble.framework in Frameworks */,
+				4CB692011D693C00008B999B /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +423,8 @@
 		632F09041BF1E771002431A3 /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
+				4CE6D9AD1D693AD6003FC5E1 /* Nimble.framework */,
+				4CE6D9AE1D693AD6003FC5E1 /* Quick.framework */,
 			);
 			name = tvOS;
 			sourceTree = "<group>";
@@ -537,6 +559,7 @@
 				632F091E1BF1E7FC002431A3 /* Sources */,
 				632F091F1BF1E7FC002431A3 /* Frameworks */,
 				632F09201BF1E7FC002431A3 /* Resources */,
+				4CE6D9AC1D693ABC003FC5E1 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1005,7 +1028,7 @@
 				INFOPLIST_FILE = Cartography/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.robertboehnke.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Cartography;
@@ -1028,7 +1051,7 @@
 				INFOPLIST_FILE = Cartography/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.robertboehnke.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Cartography;
@@ -1140,6 +1163,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = CartographyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1156,6 +1183,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = CartographyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
