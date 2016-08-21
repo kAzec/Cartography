@@ -135,48 +135,48 @@ public struct LayoutProxy {
         ])
     }
 
-    /// The left margin of the view. iOS exclusive.
+    /// The left margin of the view. iOS & tvOS exclusive.
     public var leftMargin: Edge {
         return edge(.LeftMargin)
     }
 
-    /// The right margin of the view. iOS exclusive.
+    /// The right margin of the view. iOS & tvOS exclusive.
     public var rightMargin: Edge {
         return edge(.RightMargin)
     }
 
-    /// The top margin of the view. iOS exclusive.
+    /// The top margin of the view. iOS & tvOS exclusive.
     public var topMargin: Edge {
         return edge(.TopMargin)
     }
 
-    /// The bottom margin of the view. iOS exclusive.
+    /// The bottom margin of the view. iOS & tvOS exclusive.
     public var bottomMargin: Edge {
         return edge(.BottomMargin)
     }
 
-    /// The leading margin of the view. iOS exclusive.
+    /// The leading margin of the view. iOS & tvOS exclusive.
     public var leadingMargin: Edge {
         return edge(.LeadingMargin)
     }
 
-    /// The trailing margin of the view. iOS exclusive.
+    /// The trailing margin of the view. iOS & tvOS exclusive.
     public var trailingMargin: Edge {
         return edge(.TrailingMargin)
     }
 
-    /// The horizontal center within the margins of the view. iOS exclusive.
+    /// The horizontal center within the margins of the view. iOS & tvOS exclusive.
     public var centerXWithinMargins: Edge {
         return edge(.CenterXWithinMargins)
     }
 
-    /// The vertical center within the margins of the view. iOS exclusive.
+    /// The vertical center within the margins of the view. iOS & tvOS exclusive.
     public var centerYWithinMargins: Edge {
         return edge(.CenterYWithinMargins)
     }
 
     /// The center point within the margins of the view. This property affects
-    /// `centerXWithinMargins` and `centerYWithinMargins`. iOS exclusive.
+    /// `centerXWithinMargins` and `centerYWithinMargins`. iOS & tvOS exclusive.
     public var centerWithinMargins: Point {
         return Point(context, [
             edge(.CenterXWithinMargins),
